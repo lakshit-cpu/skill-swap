@@ -1,0 +1,67 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f6f8fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  background: #0078ff;
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+nav {
+  background: #005fcc;
+  padding: 0.5rem 0;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  color: #0078ff;
+}
+
+button {
+  background: #0078ff;
+  color: white;
+  font-weight: bold;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #005fcc;
+}
+
+.match-card {
+  background: #f2f6ff;
+  border: 1px solid #d3e3ff;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}

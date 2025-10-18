@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find a Match | SkillSwap</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Find Your Skill Match</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="find.html">Find a Match</a>
+    <a href="community.html">Community</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="container">
+    <form id="swapForm">
+      <label for="teach">I can teach:</label>
+      <input type="text" id="teach" placeholder="e.g., Graphic Design" required />
+
+      <label for="learn">I want to learn:</label>
+      <input type="text" id="learn" placeholder="e.g., Spanish" required />
+
+      <button type="submit">Find Match</button>
+    </form>
+
+    <h2>Suggested Skill Swaps</h2>
+    <div id="matches"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
