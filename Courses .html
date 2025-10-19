@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillSwap | Courses</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+body{background:#1a1a2e;color:white;font-family:'Inter',sans-serif;}
+section{padding:60px 20px;text-align:center;}
+h1{margin-bottom:30px;}
+.courses-container{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
+.course-item{background:#162447;padding:20px;border-radius:12px;width:200px;cursor:pointer;transition:.3s;}
+.course-item:hover{transform:translateY(-5px);box-shadow:0 5px 15px rgba(0,0,0,0.2);}
+button{padding:12px 20px;border:none;border-radius:8px;background:#ffd700;color:#1a1a2e;font-weight:bold;}
+button:hover{background:#e6c200;}
+@media screen and (max-width:768px){
+  .courses-container{flex-direction:column;align-items:center;}
+}
+</style>
+</head>
+<body>
+<section>
+<h1>Available Courses</h1>
+<div class="courses-container">
+<div class="course-item" onclick="openCourse('Badminton')">Badminton</div>
+<div class="course-item" onclick="openCourse('Guitar')">Guitar</div>
+<div class="course-item" onclick="openCourse('Coding')">Coding</div>
+<div class="course-item" onclick="openCourse('Python')">Python</div>
+<div class="course-item" onclick="openCourse('AI')">AI</div>
+<div class="course-item" onclick="openCourse('Photography')">Photography</div>
+<div class="course-item" onclick="openCourse('Cooking')">Cooking</div>
+<div class="course-item" onclick="openCourse('Painting')">Painting</div>
+<div class="course-item" onclick="openCourse('Music')">Music</div>
+<div class="course-item" onclick="openCourse('Yoga')">Yoga</div>
+<div class="course-item" onclick="openCourse('Math')">Math</div>
+<div class="course-item" onclick="openCourse('Graphic Design')">Graphic Design</div>
+</div>
+<br><a href="index.html"><button>Back to Home</button></a>
+</section>
+
+<script>
+function openCourse(courseName){
+    // Redirect to course-detail.html with query parameter
+    window.location.href="course-detail.html?course="+encodeURIComponent(courseName);
+}
+</script>
+</body>
+</html>
