@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -155,4 +155,24 @@ document.getElementById('signInForm').addEventListener('submit', function(e){
         localStorage.setItem('currentUser',JSON.stringify(currentUser));
         formsSection.style.display='none';
         dashboard.style.display='block';
-        userName
+        userName.innerText=user.name;
+    }else{
+        alert('Invalid Email or Password!');
+    }
+    this.reset();
+});
+
+// Log Out
+document.getElementById('logoutBtn').addEventListener('click', ()=>{
+    currentUser=null;
+    localStorage.removeItem('currentUser');
+    dashboard.style.display='none';
+    formsSection.style.display='block';
+});
+
+// AI Demo
+const askBtn=document.getElementById('askBtn');
+const userQuestion=document.getElementById('userQuestion');
+const aiResponse=document.getElementById('aiResponse');
+
+askBtn.addEventListener('click
