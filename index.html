@@ -31,7 +31,7 @@ section{padding:60px 20px;text-align:center;}
 .ai-section button:hover{background-color:#e6c200;}
 .ai-section .response{margin-top:20px;font-size:1rem;min-height:50px;}
 .dashboard{background-color:#162447;padding:40px 20px;text-align:center;border-radius:12px;}
-.dashboard h2{font-size:1.8rem;margin-bottom:20px;}
+.user-info{margin-bottom:20px;font-size:1.1rem;}
 footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 @media screen and (max-width:768px){
     .feature-container,.learning-container,.teaching-container,.premium-container,.courses-container{flex-direction:column;align-items:center;}
@@ -66,7 +66,8 @@ footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 
 <!-- Dashboard -->
 <section class="dashboard" id="dashboard" style="display:none;">
-<h2>Hi, <span id="userName"></span>!</h2>
+<h2>Welcome, <span id="userName"></span>!</h2>
+<div class="user-info">Logged in as: <span id="userEmail"></span></div>
 <button id="logoutBtn">Log Out</button>
 </section>
 
@@ -113,23 +114,24 @@ footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 </footer>
 
 <script>
-// LocalStorage user system
-let users = JSON.parse(localStorage.getItem('users') || '[]');
-let currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+const users = JSON.parse(localStorage.getItem('users')||'[]');
+let currentUser = JSON.parse(localStorage.getItem('currentUser')||'null');
 
 const formsSection = document.getElementById('formsSection');
 const dashboard = document.getElementById('dashboard');
 const userName = document.getElementById('userName');
+const userEmail = document.getElementById('userEmail');
 
 // Show dashboard if already logged in
 if(currentUser){
     formsSection.style.display='none';
     dashboard.style.display='block';
     userName.innerText=currentUser.name;
+    userEmail.innerText=currentUser.email;
 }
 
 // Sign Up
-document.getElementById('signUpForm').addEventListener('submit', function(e){
+document.getElementById('signUpForm').addEventListener('submit',function(e){
     e.preventDefault();
     const name=document.getElementById('signupName').value.trim();
     const email=document.getElementById('signupEmail').value.trim();
@@ -145,7 +147,7 @@ document.getElementById('signUpForm').addEventListener('submit', function(e){
 });
 
 // Sign In
-document.getElementById('signInForm').addEventListener('submit', function(e){
+document.getElementById('signInForm').addEventListener('submit',function(e){
     e.preventDefault();
     const email=document.getElementById('signinEmail').value.trim();
     const password=document.getElementById('signinPassword').value.trim();
@@ -156,6 +158,7 @@ document.getElementById('signInForm').addEventListener('submit', function(e){
         formsSection.style.display='none';
         dashboard.style.display='block';
         userName.innerText=user.name;
+        userEmail.innerText=user.email;
     }else{
         alert('Invalid Email or Password!');
     }
@@ -163,7 +166,32 @@ document.getElementById('signInForm').addEventListener('submit', function(e){
 });
 
 // Log Out
-document.getElementById('logoutBtn').addEventListener('click', ()=>{
+document.getElementById('logoutBtn').addEventListener('click',()=>{
     currentUser=null;
     localStorage.removeItem('currentUser');
     dashboard.style.display='none';
+    formsSection.style.display='block';
+});
+
+// AI Demo
+const askBtn=document.getElementById('askBtn');
+const userQuestion=document.getElementById('userQuestion');
+const aiResponse=document.getElementById('aiResponse');
+
+askBtn.addEventListener('click',()=>{
+    const question=userQuestion.value.trim();
+    if(!question){aiResponse.innerHTML="<em>Please ask a question first.</em>";return;}
+    let answer="Hmm… I’m thinking… 🤔";
+    const q=question.toLowerCase();
+    if(q.includes("learn")) answer="Check out our Learning Hub to learn new skills!";
+    else if(q.includes("teach")) answer="Check out Teaching Hub to share your skills!";
+    else if(q.includes("python")) answer="Python is a versatile programming language!";
+    else if(q.includes("guitar")) answer="Practice regularly to improve your guitar skills!";
+    else answer="That's interesting! Keep exploring and practicing.";
+    aiResponse.innerHTML=answer;
+    userQuestion.value="";
+});
+</script>
+
+</body>
+</html>
