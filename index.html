@@ -31,23 +31,21 @@ section{padding:60px 20px;text-align:center;}
 .ai-section button:hover{background-color:#e6c200;}
 .ai-section .response{margin-top:20px;font-size:1rem;min-height:50px;}
 .dashboard{background-color:#162447;padding:40px 20px;text-align:center;border-radius:12px;}
-.dashboard h2{font-size:1.8rem;margin-bottom:20px;}
+.user-info{margin-bottom:20px;font-size:1.1rem;}
 footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 @media screen and (max-width:768px){
-    .feature-container,.learning-container,.teaching-container,.premium-container,.courses-container{flex-direction:column;align-items:center;}
-    .hero h1{font-size:2rem;}
+    .feature-container,.learning-container,.teaching-container,.premium-container,.courses-container{flex-direction:column;align-items:center;}
+    .hero h1{font-size:2rem;}
 }
 </style>
 </head>
 <body>
-
 <!-- Hero Section -->
 <section class="hero">
 <h1>SkillSwap</h1>
 <p>Learn. Teach. Connect. Exchange skills effortlessly.</p>
 <a href="courses.html"><button class="btn">Explore Courses</button></a>
 </section>
-
 <!-- Sign Up / Sign In -->
 <section class="forms" id="formsSection">
 <h2>Sign Up / Sign In</h2>
@@ -63,13 +61,12 @@ footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 <button type="submit">Sign In</button>
 </form>
 </section>
-
 <!-- Dashboard -->
 <section class="dashboard" id="dashboard" style="display:none;">
-<h2>Hi, <span id="userName"></span>!</h2>
+<h2>Welcome, <span id="userName"></span>!</h2>
+<div class="user-info">Logged in as: <span id="userEmail"></span></div>
 <button id="logoutBtn">Log Out</button>
 </section>
-
 <!-- Learning Section -->
 <section class="learning">
 <h2>Learning Hub</h2>
@@ -79,7 +76,6 @@ footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 <div class="learning-item" onclick="alert('Learn AI Basics!')"><h3>AI Basics</h3><p>Learn AI concepts and applications.</p></div>
 </div>
 </section>
-
 <!-- Teaching Section -->
 <section class="teaching">
 <h2>Teaching Hub</h2>
@@ -89,7 +85,6 @@ footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 <div class="teaching-item" onclick="alert('Offer Graphic Design!')"><h3>Graphic Design</h3><p>Share your design skills and techniques.</p></div>
 </div>
 </section>
-
 <!-- Premium Section -->
 <section class="premium">
 <h2>Fast Track / Premium Lessons</h2>
@@ -98,7 +93,6 @@ footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 <div class="premium-item" onclick="alert('Master Guitar in 30 Days - Demo')"><h3>Master Guitar</h3><p>Intensive lessons for fast progress.</p></div>
 </div>
 </section>
-
 <!-- AI Section -->
 <section class="ai-section">
 <h2>Ask Something</h2>
@@ -107,52 +101,80 @@ footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 <button id="askBtn">Ask AI</button>
 <div class="response" id="aiResponse"></div>
 </section>
-
 <footer>
 &copy; 2025 SkillSwap. All Rights Reserved.
 </footer>
-
 <script>
-// LocalStorage user system
-let users = JSON.parse(localStorage.getItem('users') || '[]');
-let currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
-
+const users = JSON.parse(localStorage.getItem('users')||'[]');
+let currentUser = JSON.parse(localStorage.getItem('currentUser')||'null');
 const formsSection = document.getElementById('formsSection');
 const dashboard = document.getElementById('dashboard');
 const userName = document.getElementById('userName');
-
+const userEmail = document.getElementById('userEmail');
 // Show dashboard if already logged in
 if(currentUser){
-    formsSection.style.display='none';
-    dashboard.style.display='block';
-    userName.innerText=currentUser.name;
+    formsSection.style.display='none';
+    dashboard.style.display='block';
+    userName.innerText=currentUser.name;
+    userEmail.innerText=currentUser.email;
 }
-
 // Sign Up
-document.getElementById('signUpForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const name=document.getElementById('signupName').value.trim();
-    const email=document.getElementById('signupEmail').value.trim();
-    const password=document.getElementById('signupPassword').value.trim();
-    if(users.find(u=>u.email===email)){
-        alert('Email already exists!');
-        return;
-    }
-    users.push({name,email,password});
-    localStorage.setItem('users',JSON.stringify(users));
-    alert('Account Created Successfully!');
-    this.reset();
+document.getElementById('signUpForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const name=document.getElementById('signupName').value.trim();
+    const email=document.getElementById('signupEmail').value.trim();
+    const password=document.getElementById('signupPassword').value.trim();
+    if(users.find(u=>u.email===email)){
+        alert('Email already exists!');
+        return;
+    }
+    users.push({name,email,password});
+    localStorage.setItem('users',JSON.stringify(users));
+    alert('Account Created Successfully!');
+    this.reset();
 });
-
 // Sign In
-document.getElementById('signInForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const email=document.getElementById('signinEmail').value.trim();
-    const password=document.getElementById('signinPassword').value.trim();
-    const user=users.find(u=>u.email===email && u.password===password);
-    if(user){
-        currentUser=user;
-        localStorage.setItem('currentUser',JSON.stringify(currentUser));
-        formsSection.style.display='none';
-        dashboard.style.display='block';
-        userName
+document.getElementById('signInForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const email=document.getElementById('signinEmail').value.trim();
+    const password=document.getElementById('signinPassword').value.trim();
+    const user=users.find(u=>u.email===email && u.password===password);
+    if(user){
+        currentUser=user;
+        localStorage.setItem('currentUser',JSON.stringify(currentUser));
+        formsSection.style.display='none';
+        dashboard.style.display='block';
+        userName.innerText=user.name;
+        userEmail.innerText=user.email;
+    }else{
+        alert('Invalid Email or Password!');
+    }
+    this.reset();
+});
+// Log Out
+document.getElementById('logoutBtn').addEventListener('click',()=>{
+    currentUser=null;
+    localStorage.removeItem('currentUser');
+    dashboard.style.display='none';
+    formsSection.style.display='block';
+});
+// AI Demo
+const askBtn=document.getElementById('askBtn');
+const userQuestion=document.getElementById('userQuestion');
+const aiResponse=document.getElementById('aiResponse');
+askBtn.addEventListener('click',()=>{
+    const question=userQuestion.value.trim();
+    if(!question){aiResponse.innerHTML="<em>Please ask a question first.</em>";return;}
+    let answer="Hmm… I’m thinking… 🤔";
+    const q=question.toLowerCase();
+    if(q.includes("learn")) answer="Check out our Learning Hub to learn new skills!";
+    else if(q.includes("teach")) answer="Check out Teaching Hub to share your skills!";
+    else if(q.includes("python")) answer="Python is a versatile programming language!";
+    else if(q.includes("guitar")) answer="Practice regularly to improve your guitar skills!";
+    else answer="That's interesting! Keep exploring and practicing.";
+    aiResponse.innerHTML=answer;
+    userQuestion.value="";
+});
+</script>
+</body>
+</html>
