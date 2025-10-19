@@ -1,33 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SkillSwap | Home</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillSwap | Learn. Teach. Connect.</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-  <header>
-    <h1>SkillSwap</h1>
-    <p>Exchange skills. Learn something new. Teach what you know.</p>
-  </header>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="find.html">Find a Match</a>
-    <a href="community.html">Community</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <div class="container">
-    <h2>Welcome to SkillSwap!</h2>
-    <p>SkillSwap is a platform to exchange skills and learn new ones.</p>
-    <!-- This button sends you to the Find a Match page -->
-    <button id="matchBtn">Find Your Skill Match</button>
-  </div>
-
-  <script src="script.js"></script>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container nav-container">
+      <h1 class="logo">SkillSwap</h1>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Find Match</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="btn btn-outline">Sign In</a>
+    </div>
+  </header>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h2>Exchange Skills. Learn Together. Grow Together.</h2>
+      <p>Discover people who share your interests and can teach you something new. SkillSwap helps you connect, learn, and teach in one platform.</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn btn-primary">Get Started</a>
+        <a href="#" class="btn btn-outline">Join as Mentor</a>
+      </div>
+    </div>
+  </section>
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="container feature-grid">
+      <div class="feature-card">
+        <i class="fas fa-graduation-cap"></i>
+        <h3>Learn Any Skill</h3>
+        <p>From coding to cooking, explore thousands of skills taught by passionate mentors.</p>
+        <a href="#" class="btn-link">Explore &rarr;</a>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-handshake"></i>
+        <h3>Teach What You Love</h3>
+        <p>Share your expertise and help others succeed while building your reputation.</p>
+        <a href="#" class="btn-link">Start Teaching &rarr;</a>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-users"></i>
+        <h3>Build Global Connections</h3>
+        <p>Connect with learners and teachers worldwide through our smart skill-matching system.</p>
+        <a href="#" class="btn-link">Meet People &rarr;</a>
+      </div>
+    </div>
+  </section>
+  <!-- CALL TO ACTION -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to exchange your skills?</h2>
+      <p>Join a community that learns and grows together. It’s free and easy to start.</p>
+      <a href="#" class="btn btn-primary">Join SkillSwap</a>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>SkillSwap</h3>
+        <p>Learn, teach, and grow together. A platform that empowers knowledge exchange.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="#">Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2025 SkillSwap. All rights reserved.</p>
+  </footer>
 </body>
 </html>
