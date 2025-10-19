@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillSwap | Course Details</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+body{background:#1a1a2e;color:white;font-family:'Inter',sans-serif;}
+section{padding:60px 20px;text-align:center;}
+h1,h2{margin-bottom:20px;}
+ul{list-style:none;padding-left:0;}
+li{background:#162447;margin:10px 0;padding:10px;border-radius:8px;}
+button{padding:12px 20px;border:none;border-radius:8px;background:#ffd700;color:#1a1a2e;font-weight:bold;cursor:pointer;}
+button:hover{background:#e6c200;}
+</style>
+</head>
+<body>
+<section>
+<h1 id="courseName">Course Name</h1>
+<h2>Specialities</h2>
+<ul id="specialitiesList"></ul>
+<h2>Teachers</h2>
+<ul id="teachersList"></ul>
+<br><a href="courses.html"><button>Back to Courses</button></a>
+</section>
+
+<script>
+// Define courses data
+const coursesData={
+    "Badminton": {
+        specialities:["Footwork","Smash","Drop Shots","Net Play","Strategy"],
+        teachers:["Alice","Bob","Charlie"]
+    },
+    "Guitar": {
+        specialities:["Chords","Strumming","Fingerstyle","Song Practice","Music Theory"],
+        teachers:["David","Emma","Fiona"]
+    },
+    "Coding": {
+        specialities:["Algorithms","Data Structures","Web Development","Debugging","Version Control"],
+        teachers:["George","Hannah","Ian"]
+    },
+    "Python": {
+        specialities:["Basics","OOP","Projects","Libraries","Data Analysis"],
+        teachers:["Jack","Karen","Leo"]
+    },
+    "AI": {
+        specialities:["Machine Learning","Neural Networks","NLP","Computer Vision","Reinforcement Learning"],
+        teachers:["Mona","Nathan","Olivia"]
+    },
+    "Photography": {
+        specialities:["Lighting","Composition","Editing","Portraits","Landscape"],
+        teachers:["Peter","Quinn","Rachel"]
+    },
+    "Cooking": {
+        specialities:["Italian","Baking","Indian","Grilling","Desserts"],
+        teachers:["Sam","Tina","Uma"]
+    },
+    "Painting": {
+        specialities:["Watercolor","Oil Painting","Sketching","Abstract","Portraits"],
+        teachers:["Vera","Will","Xander"]
+    },
+    "Music": {
+        specialities:["Piano","Singing","Drums","Music Theory","Composition"],
+        teachers:["Yara","Zane","Alex"]
+    },
+    "Yoga": {
+        specialities:["Hatha","Vinyasa","Meditation","Breathing Techniques","Flexibility"],
+        teachers:["Bella","Cody","Diana"]
+    },
+    "Math": {
+        specialities:["Algebra","Geometry","Trigonometry","Calculus","Statistics"],
+        teachers:["Ethan","Faith","Gina"]
+    },
+    "Graphic Design": {
+        specialities:["Photoshop","Illustrator","Typography","Branding","UI/UX"],
+        teachers:["Harry","Isla","Jackie"]
+    }
+};
+
+// Get course from query parameter
+const urlParams=new URLSearchParams(window.location.search);
+const courseName=urlParams.get('course');
+
+// Display course data
+if(courseName && coursesData[courseName]){
+    document.getElementById('courseName').innerText=courseName;
+
+    const specialitiesList=document.getElementById('specialitiesList');
+    coursesData[courseName].specialities.forEach(s=>{
+        const li=document.createElement('li');
+        li.innerText=s;
+        specialitiesList.appendChild(li);
+    });
+
+    const teachersList=document.getElementById('teachersList');
+    coursesData[courseName].teachers.forEach(t=>{
+        const li=document.createElement('li');
+        li.innerText=t;
+        teachersList.appendChild(li);
+    });
+}else{
+    document.getElementById('courseName').innerText="Course Not Found";
+}
+</script>
+</body>
+</html>
