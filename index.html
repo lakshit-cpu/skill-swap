@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SkillSwap | Learn. Teach. Connect.</title>
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <!-- CSS -->
-  <link rel="stylesheet" href="styles.css" />
-  <!-- Icons -->
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  <!-- OpenAI API integration (will be used in JS) -->
 </head>
 <body>
   <!-- HEADER -->
@@ -36,6 +37,28 @@
       <div class="hero-buttons">
         <a href="#" class="btn btn-primary">Get Started</a>
         <a href="#" class="btn btn-outline">Join as Mentor</a>
+      </div>
+    </div>
+  </section>
+  <!-- SIGN IN / CREATE ACCOUNT -->
+  <section class="auth-section">
+    <div class="container auth-container">
+      <div class="auth-card">
+        <h3>Sign In</h3>
+        <form id="signInForm">
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit" class="btn btn-primary">Sign In</button>
+        </form>
+      </div>
+      <div class="auth-card create-account">
+        <h3>Create Account</h3>
+        <form id="signUpForm">
+          <input type="text" placeholder="Full Name" required>
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit" class="btn btn-outline">Sign Up</button>
+        </form>
       </div>
     </div>
   </section>
@@ -70,6 +93,18 @@
       <a href="#" class="btn btn-primary">Join SkillSwap</a>
     </div>
   </section>
+  <!-- ASK SOMETHING AI SECTION -->
+  <section class="ai-section">
+    <div class="container">
+      <h2>Ask Something</h2>
+      <p>Have a question about learning or skills? Ask here and get instant AI answers!</p>
+      <div class="ai-container">
+        <textarea id="userQuestion" placeholder="Type your question here..."></textarea>
+        <button id="askBtn" class="btn btn-primary">Ask AI</button>
+      </div>
+      <div class="ai-response" id="aiResponse"></div>
+    </div>
+  </section>
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-grid">
@@ -97,5 +132,53 @@
     </div>
     <p class="footer-bottom">© 2025 SkillSwap. All rights reserved.</p>
   </footer>
+  <!-- JS -->
+  <script>
+    // ----------------- Sign In / Sign Up Alerts (demo) -----------------
+    document.getElementById('signInForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Sign In successful (demo)');
+      this.reset();
+    });
+    document.getElementById('signUpForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Account Created (demo)');
+      this.reset();
+    });
+    // ----------------- AI ASK SECTION -----------------
+    const askBtn = document.getElementById('askBtn');
+    const userQuestion = document.getElementById('userQuestion');
+    const aiResponse = document.getElementById('aiResponse');
+    askBtn.addEventListener('click', async () => {
+      const question = userQuestion.value.trim();
+      if(!question) {
+        aiResponse.innerHTML = "<em>Please ask a question first.</em>";
+        return;
+      }
+      aiResponse.innerHTML = "Thinking... 🤔";
+      // --- Call OpenAI API ---
+      // You need your own OpenAI API key
+      const API_KEY = "YOUR_OPENAI_API_KEY_HERE";
+      try {
+        const response = await fetch("https://api.openai.com/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${API_KEY}`
+          },
+          body: JSON.stringify({
+            model: "gpt-3.5-turbo",
+            messages: [{role: "user", content: question}],
+            max_tokens: 150
+          })
+        });
+        const data = await response.json();
+        aiResponse.innerHTML = data.choices[0].message.content;
+      } catch (err) {
+        aiResponse.innerHTML = "Sorry, there was an error. Make sure you added a valid OpenAI API key.";
+      }
+      userQuestion.value = "";
+    });
+  </script>
 </body>
 </html>
