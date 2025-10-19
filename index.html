@@ -1,224 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillSwap | Learn. Teach. Connect.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* ------------------ General Styles ------------------ */
-        *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-        body{background-color:#f9f9f9;color:#333;line-height:1.6;}
-        h1,h2,h3{color:#1a1a2e;}
-        button{cursor:pointer;transition:.3s;}
-
-        /* ------------------ Header / Hero ------------------ */
-        .hero{
-            background: linear-gradient(to right,#1a1a2e,#162447);
-            color:#ffd700;
-            text-align:center;
-            padding:80px 20px 60px 20px;
-        }
-        .hero h1{font-size:2.5rem;margin-bottom:20px;}
-        .hero p{font-size:1.2rem;margin-bottom:30px;}
-        .hero .btn{
-            background-color:#ffd700;color:#1a1a2e;padding:15px 30px;font-size:1rem;
-            border:none;border-radius:8px;
-        }
-        .hero .btn:hover{background-color:#e6c200;}
-
-        /* ------------------ Sections ------------------ */
-        section{padding:60px 20px;text-align:center;}
-        .features,.learning,.teaching,.premium,.ai-section{background-color:#fff;margin-bottom:20px;border-radius:12px;padding:40px 20px;}
-        .feature-container,.learning-container,.teaching-container,.premium-container{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
-        .feature,.learning-item,.teaching-item,.premium-item{
-            background-color:#162447;color:#ffd700;padding:20px;border-radius:12px;width:250px;min-height:150px;transition:.3s;
-        }
-        .feature:hover,.learning-item:hover,.teaching-item:hover,.premium-item:hover{
-            transform:translateY(-5px);box-shadow:0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* ------------------ Forms ------------------ */
-        .forms{background-color:#f2f2f2;padding:60px 20px;border-radius:12px;}
-        .forms h2{margin-bottom:30px;}
-        .forms form{max-width:400px;margin:0 auto 30px auto;display:flex;flex-direction:column;gap:15px;}
-        .forms input{padding:12px;border-radius:8px;border:1px solid #ccc;font-size:1rem;}
-        .forms button{padding:15px;border-radius:8px;border:none;background-color:#1a1a2e;color:#ffd700;font-size:1rem;}
-        .forms button:hover{background-color:#162447;}
-
-        /* ------------------ AI Section ------------------ */
-        .ai-section textarea{width:100%;max-width:500px;height:100px;padding:15px;border-radius:8px;border:1px solid #ccc;resize:none;margin-bottom:15px;font-size:1rem;}
-        .ai-section button{padding:12px 25px;border-radius:8px;border:none;background-color:#1a1a2e;color:#ffd700;font-size:1rem;}
-        .ai-section button:hover{background-color:#162447;}
-        .ai-section .response{margin-top:20px;font-size:1rem;color:#333;min-height:50px;}
-
-        /* ------------------ Dashboard ------------------ */
-        .dashboard{background-color:#f9f9f9;padding:40px 20px;text-align:center;}
-        .dashboard h2{margin-bottom:30px;color:#1a1a2e;}
-        .user-info{margin-bottom:20px;font-size:1.1rem;}
-
-        /* ------------------ Footer ------------------ */
-        footer{background-color:#1a1a2e;color:#ffd700;text-align:center;padding:20px;}
-
-        /* ------------------ Responsive ------------------ */
-        @media screen and (max-width:768px){
-            .feature-container,.learning-container,.teaching-container,.premium-container{flex-direction:column;align-items:center;}
-            .hero h1{font-size:2rem;}
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillSwap | Learn. Teach. Connect.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background-color:#1a1a2e;color:white;line-height:1.6;}
+h1,h2,h3{color:white;}
+button{cursor:pointer;transition:.3s;}
+.hero{background:linear-gradient(to right,#1a1a2e,#162447);text-align:center;padding:80px 20px 60px 20px;}
+.hero h1{font-size:2.5rem;margin-bottom:20px;}
+.hero p{font-size:1.2rem;margin-bottom:30px;}
+.hero .btn{background-color:#ffd700;color:#1a1a2e;padding:15px 30px;font-size:1rem;border:none;border-radius:8px;}
+.hero .btn:hover{background-color:#e6c200;}
+section{padding:60px 20px;text-align:center;}
+.features,.learning,.teaching,.premium,.ai-section,.courses-section{background-color:#162447;margin-bottom:20px;border-radius:12px;padding:40px 20px;}
+.feature-container,.learning-container,.teaching-container,.premium-container,.courses-container{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
+.feature,.learning-item,.teaching-item,.premium-item,.course-item{background-color:#1a1a2e;color:white;padding:20px;border-radius:12px;width:250px;min-height:150px;transition:.3s;}
+.feature:hover,.learning-item:hover,.teaching-item:hover,.premium-item:hover,.course-item:hover{transform:translateY(-5px);box-shadow:0 5px 15px rgba(0,0,0,0.2);}
+.forms{background-color:#162447;padding:60px 20px;border-radius:12px;}
+.forms h2{margin-bottom:30px;}
+.forms form{max-width:400px;margin:0 auto 30px auto;display:flex;flex-direction:column;gap:15px;}
+.forms input{padding:12px;border-radius:8px;border:1px solid #ccc;font-size:1rem;background:#1a1a2e;color:white;}
+.forms button{padding:15px;border-radius:8px;border:none;background-color:#ffd700;color:#1a1a2e;font-size:1rem;}
+.forms button:hover{background-color:#e6c200;}
+.ai-section textarea{width:100%;max-width:500px;height:100px;padding:15px;border-radius:8px;border:1px solid #ccc;resize:none;margin-bottom:15px;font-size:1rem;background:#1a1a2e;color:white;}
+.ai-section button{padding:12px 25px;border-radius:8px;border:none;background-color:#ffd700;color:#1a1a2e;font-size:1rem;}
+.ai-section button:hover{background-color:#e6c200;}
+.ai-section .response{margin-top:20px;font-size:1rem;min-height:50px;}
+.dashboard{background-color:#162447;padding:40px 20px;text-align:center;border-radius:12px;}
+.user-info{margin-bottom:20px;font-size:1.1rem;}
+footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
+@media screen and (max-width:768px){
+    .feature-container,.learning-container,.teaching-container,.premium-container,.courses-container{flex-direction:column;align-items:center;}
+    .hero h1{font-size:2rem;}
+}
+</style>
 </head>
 <body>
 
 <!-- Hero Section -->
 <section class="hero">
-    <h1>SkillSwap</h1>
-    <p>Learn. Teach. Connect. Exchange skills effortlessly.</p>
+<h1>SkillSwap</h1>
+<p>Learn. Teach. Connect. Exchange skills effortlessly.</p>
+<a href="courses.html"><button class="btn">Explore Courses</button></a>
 </section>
 
-<!-- User Forms Section -->
+<!-- Sign Up / Sign In -->
 <section class="forms" id="formsSection">
-    <h2>Sign Up / Sign In</h2>
-    <form id="signUpForm">
-        <input type="text" placeholder="Name" required id="signupName">
-        <input type="email" placeholder="Email" required id="signupEmail">
-        <input type="password" placeholder="Password" required id="signupPassword">
-        <button type="submit">Create Account</button>
-    </form>
-    <form id="signInForm">
-        <input type="email" placeholder="Email" required id="signinEmail">
-        <input type="password" placeholder="Password" required id="signinPassword">
-        <button type="submit">Sign In</button>
-    </form>
+<h2>Sign Up / Sign In</h2>
+<form id="signUpForm">
+<input type="text" placeholder="Name" required id="signupName">
+<input type="email" placeholder="Email" required id="signupEmail">
+<input type="password" placeholder="Password" required id="signupPassword">
+<button type="submit">Create Account</button>
+</form>
+<form id="signInForm">
+<input type="email" placeholder="Email" required id="signinEmail">
+<input type="password" placeholder="Password" required id="signinPassword">
+<button type="submit">Sign In</button>
+</form>
 </section>
 
-<!-- Dashboard Section -->
+<!-- Dashboard -->
 <section class="dashboard" id="dashboard" style="display:none;">
-    <h2>Welcome, <span id="userName"></span>!</h2>
-    <div class="user-info">You are logged in as: <span id="userEmail"></span></div>
-    <button id="logoutBtn">Log Out</button>
-</section>
-
-<!-- Features Section -->
-<section class="features">
-    <h2>Our Features</h2>
-    <div class="feature-container">
-        <div class="feature"><h3>Learn New Skills</h3><p>Explore courses and tutorials to expand your knowledge.</p></div>
-        <div class="feature"><h3>Teach Others</h3><p>Share your expertise and help learners grow.</p></div>
-        <div class="feature"><h3>Connect</h3><p>Meet like-minded learners and build your network.</p></div>
-    </div>
+<h2>Welcome, <span id="userName"></span>!</h2>
+<div class="user-info">Logged in as: <span id="userEmail"></span></div>
+<button id="logoutBtn">Log Out</button>
 </section>
 
 <!-- Learning Section -->
 <section class="learning">
-    <h2>Learning Hub</h2>
-    <div class="learning-container">
-        <div class="learning-item" onclick="alert('Learn Guitar Basics!')"><h3>Guitar Basics</h3><p>Learn chords, strumming, and simple songs.</p></div>
-        <div class="learning-item" onclick="alert('Learn Python Coding!')"><h3>Python Coding</h3><p>Start coding with Python step by step.</p></div>
-        <div class="learning-item" onclick="alert('Learn Italian Cooking!')"><h3>Italian Cooking</h3><p>Make delicious Italian dishes at home.</p></div>
-    </div>
+<h2>Learning Hub</h2>
+<div class="learning-container">
+<div class="learning-item" onclick="alert('Learn Guitar Basics!')"><h3>Guitar Basics</h3><p>Learn chords, strumming, and simple songs.</p></div>
+<div class="learning-item" onclick="alert('Learn Python Coding!')"><h3>Python Coding</h3><p>Start coding with Python step by step.</p></div>
+<div class="learning-item" onclick="alert('Learn AI Basics!')"><h3>AI Basics</h3><p>Learn AI concepts and applications.</p></div>
+</div>
 </section>
 
 <!-- Teaching Section -->
 <section class="teaching">
-    <h2>Teaching Hub</h2>
-    <div class="teaching-container">
-        <div class="teaching-item" onclick="alert('Offer Guitar Lessons!')"><h3>Guitar Lessons</h3><p>Teach beginners how to play guitar.</p></div>
-        <div class="teaching-item" onclick="alert('Offer Math Tutoring!')"><h3>Math Tutoring</h3><p>Help students understand math concepts.</p></div>
-        <div class="teaching-item" onclick="alert('Offer Graphic Design!')"><h3>Graphic Design</h3><p>Share your design skills and techniques.</p></div>
-    </div>
+<h2>Teaching Hub</h2>
+<div class="teaching-container">
+<div class="teaching-item" onclick="alert('Offer Guitar Lessons!')"><h3>Guitar Lessons</h3><p>Teach beginners how to play guitar.</p></div>
+<div class="teaching-item" onclick="alert('Offer Math Tutoring!')"><h3>Math Tutoring</h3><p>Help students understand math concepts.</p></div>
+<div class="teaching-item" onclick="alert('Offer Graphic Design!')"><h3>Graphic Design</h3><p>Share your design skills and techniques.</p></div>
+</div>
 </section>
 
 <!-- Premium Section -->
 <section class="premium">
-    <h2>Fast Track / Premium Lessons</h2>
-    <div class="premium-container">
-        <div class="premium-item" onclick="alert('Advanced Python Projects - Demo')"><h3>Advanced Python</h3><p>Work on real-life projects to level up your skills.</p></div>
-        <div class="premium-item" onclick="alert('Master Guitar in 30 Days - Demo')"><h3>Master Guitar</h3><p>Intensive lessons for fast progress.</p></div>
-    </div>
+<h2>Fast Track / Premium Lessons</h2>
+<div class="premium-container">
+<div class="premium-item" onclick="alert('Advanced Python Projects - Demo')"><h3>Advanced Python</h3><p>Work on real-life projects to level up your skills.</p></div>
+<div class="premium-item" onclick="alert('Master Guitar in 30 Days - Demo')"><h3>Master Guitar</h3><p>Intensive lessons for fast progress.</p></div>
+</div>
 </section>
 
 <!-- AI Section -->
 <section class="ai-section">
-    <h2>Ask Something</h2>
-    <textarea id="userQuestion" placeholder="Type your question here..."></textarea>
-    <br>
-    <button id="askBtn">Ask AI</button>
-    <div class="response" id="aiResponse"></div>
+<h2>Ask Something</h2>
+<textarea id="userQuestion" placeholder="Type your question here..."></textarea>
+<br>
+<button id="askBtn">Ask AI</button>
+<div class="response" id="aiResponse"></div>
 </section>
 
-<!-- Footer -->
 <footer>
-    &copy; 2025 SkillSwap. All Rights Reserved.
+&copy; 2025 SkillSwap. All Rights Reserved.
 </footer>
 
 <script>
-    // ------------------ Memory Storage for Users ------------------
-    const users = []; // stores {name, email, password}
-    let currentUser = null;
+const users = JSON.parse(localStorage.getItem('users')||'[]');
+let currentUser = JSON.parse(localStorage.getItem('currentUser')||'null');
 
-    const formsSection = document.getElementById('formsSection');
-    const dashboard = document.getElementById('dashboard');
-    const userName = document.getElementById('userName');
-    const userEmail = document.getElementById('userEmail');
+const formsSection = document.getElementById('formsSection');
+const dashboard = document.getElementById('dashboard');
+const userName = document.getElementById('userName');
+const userEmail = document.getElementById('userEmail');
 
-    // ------------------ Sign Up ------------------
-    document.getElementById('signUpForm').addEventListener('submit', function(e){
-        e.preventDefault();
-        const name = document.getElementById('signupName').value.trim();
-        const email = document.getElementById('signupEmail').value.trim();
-        const password = document.getElementById('signupPassword').value.trim();
+// Show dashboard if already logged in
+if(currentUser){
+    formsSection.style.display='none';
+    dashboard.style.display='block';
+    userName.innerText=currentUser.name;
+    userEmail.innerText=currentUser.email;
+}
 
-        if(users.find(u=>u.email===email)){
-            alert('Email already exists!');
-            return;
-        }
+// Sign Up
+document.getElementById('signUpForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const name=document.getElementById('signupName').value.trim();
+    const email=document.getElementById('signupEmail').value.trim();
+    const password=document.getElementById('signupPassword').value.trim();
+    if(users.find(u=>u.email===email)){
+        alert('Email already exists!');
+        return;
+    }
+    users.push({name,email,password});
+    localStorage.setItem('users',JSON.stringify(users));
+    alert('Account Created Successfully!');
+    this.reset();
+});
 
-        users.push({name,email,password});
-        alert('Account Created Successfully!');
-        this.reset();
-    });
+// Sign In
+document.getElementById('signInForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const email=document.getElementById('signinEmail').value.trim();
+    const password=document.getElementById('signinPassword').value.trim();
+    const user=users.find(u=>u.email===email && u.password===password);
+    if(user){
+        currentUser=user;
+        localStorage.setItem('currentUser',JSON.stringify(currentUser));
+        formsSection.style.display='none';
+        dashboard.style.display='block';
+        userName.innerText=user.name;
+        userEmail.innerText=user.email;
+    }else{
+        alert('Invalid Email or Password!');
+    }
+    this.reset();
+});
 
-    // ------------------ Sign In ------------------
-    document.getElementById('signInForm').addEventListener('submit', function(e){
-        e.preventDefault();
-        const email = document.getElementById('signinEmail').value.trim();
-        const password = document.getElementById('signinPassword').value.trim();
+// Log Out
+document.getElementById('logoutBtn').addEventListener('click',()=>{
+    currentUser=null;
+    localStorage.removeItem('currentUser');
+    dashboard.style.display='none';
+    formsSection.style.display='block';
+});
 
-        const user = users.find(u=>u.email===email && u.password===password);
-        if(user){
-            currentUser = user;
-            formsSection.style.display='none';
-            dashboard.style.display='block';
-            userName.innerText = user.name;
-            userEmail.innerText = user.email;
-        } else {
-            alert('Invalid Email or Password!');
-        }
+// AI Demo
+const askBtn=document.getElementById('askBtn');
+const userQuestion=document.getElementById('userQuestion');
+const aiResponse=document.getElementById('aiResponse');
 
-        this.reset();
-    });
+askBtn.addEventListener('click',()=>{
+    const question=userQuestion.value.trim();
+    if(!question){aiResponse.innerHTML="<em>Please ask a question first.</em>";return;}
+    let answer="Hmm… I’m thinking… 🤔";
+    const q=question.toLowerCase();
+    if(q.includes("learn")) answer="Check out our Learning Hub to learn new skills!";
+    else if(q.includes("teach")) answer="Check out Teaching Hub to share your skills!";
+    else if(q.includes("python")) answer="Python is a versatile programming language!";
+    else if(q.includes("guitar")) answer="Practice regularly to improve your guitar skills!";
+    else answer="That's interesting! Keep exploring and practicing.";
+    aiResponse.innerHTML=answer;
+    userQuestion.value="";
+});
+</script>
 
-    // ------------------ Log Out ------------------
-    document.getElementById('logoutBtn').addEventListener('click',()=>{
-        currentUser=null;
-        dashboard.style.display='none';
-        formsSection.style.display='block';
-    });
-
-    // ------------------ AI Demo ------------------
-    const askBtn = document.getElementById('askBtn');
-    const userQuestion = document.getElementById('userQuestion');
-    const aiResponse = document.getElementById('aiResponse');
-
-    askBtn.addEventListener('click', () => {
-        const question = userQuestion.value.trim();
-        if(!question) {
-            aiResponse.innerHTML = "<em>Please ask a question first.</em>";
-            return;
-        }
-
-        let answer = "Hmm… I’m thinking… 🤔";
-
-        if(question.toLowerCase().includes("learn")){
-            answer="Check out our Learning Hub to learn new skills step by step!";
-
+</body>
+</html>
