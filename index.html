@@ -10,43 +10,46 @@
 body{background-color:#1a1a2e;color:white;line-height:1.6;}
 h1,h2,h3{color:white;}
 button{cursor:pointer;transition:.3s;}
-.hero{background:linear-gradient(to right,#1a1a2e,#162447);text-align:center;padding:80px 20px 60px 20px;}
-.hero h1{font-size:2.5rem;margin-bottom:20px;}
-.hero p{font-size:1.2rem;margin-bottom:30px;}
-.hero .btn{background-color:#ffd700;color:#1a1a2e;padding:15px 30px;font-size:1rem;border:none;border-radius:8px;}
-.hero .btn:hover{background-color:#e6c200;}
+a{color:inherit;text-decoration:none;}
+.hero{background:linear-gradient(to right,#1a1a2e,#162447);text-align:center;padding:100px 20px 80px 20px;}
+.hero h1{font-size:3rem;margin-bottom:20px;}
+.hero p{font-size:1.3rem;margin-bottom:30px;}
+.hero .btn{background-color:#ffd700;color:#1a1a2e;padding:15px 30px;font-size:1.1rem;border:none;border-radius:10px;font-weight:600;}
+.hero .btn:hover{background-color:#e6c200;transform:scale(1.05);}
 section{padding:60px 20px;text-align:center;}
-.features,.learning,.teaching,.premium,.ai-section,.courses-section{background-color:#162447;margin-bottom:20px;border-radius:12px;padding:40px 20px;}
-.feature-container,.learning-container,.teaching-container,.premium-container,.courses-container{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
-.feature,.learning-item,.teaching-item,.premium-item,.course-item{background-color:#1a1a2e;color:white;padding:20px;border-radius:12px;width:250px;min-height:150px;transition:.3s;}
-.feature:hover,.learning-item:hover,.teaching-item:hover,.premium-item:hover,.course-item:hover{transform:translateY(-5px);box-shadow:0 5px 15px rgba(0,0,0,0.2);}
-.forms{background-color:#162447;padding:60px 20px;border-radius:12px;}
+.feature-container,.learning-container,.teaching-container,.premium-container,.courses-container{display:flex;flex-wrap:wrap;justify-content:center;gap:25px;}
+.feature,.learning-item,.teaching-item,.premium-item,.course-item{background-color:#1a1a2e;color:white;padding:25px;border-radius:15px;width:280px;min-height:160px;transition:.3s;box-shadow:0 2px 10px rgba(0,0,0,0.3);}
+.feature:hover,.learning-item:hover,.teaching-item:hover,.premium-item:hover,.course-item:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.4);}
+.forms{background-color:#162447;padding:60px 20px;border-radius:15px;max-width:500px;margin:0 auto;}
 .forms h2{margin-bottom:30px;}
-.forms form{max-width:400px;margin:0 auto 30px auto;display:flex;flex-direction:column;gap:15px;}
-.forms input{padding:12px;border-radius:8px;border:1px solid #ccc;font-size:1rem;background:#1a1a2e;color:white;}
-.forms button{padding:15px;border-radius:8px;border:none;background-color:#ffd700;color:#1a1a2e;font-size:1rem;}
-.forms button:hover{background-color:#e6c200;}
-.ai-section textarea{width:100%;max-width:500px;height:100px;padding:15px;border-radius:8px;border:1px solid #ccc;resize:none;margin-bottom:15px;font-size:1rem;background:#1a1a2e;color:white;}
-.ai-section button{padding:12px 25px;border-radius:8px;border:none;background-color:#ffd700;color:#1a1a2e;font-size:1rem;}
-.ai-section button:hover{background-color:#e6c200;}
-.ai-section .response{margin-top:20px;font-size:1rem;min-height:50px;}
-.dashboard{background-color:#162447;padding:40px 20px;text-align:center;border-radius:12px;}
-.dashboard h2{font-size:1.8rem;margin-bottom:20px;}
-footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
+.forms form{display:flex;flex-direction:column;gap:15px;}
+.forms input{padding:12px;border-radius:8px;border:1px solid #ccc;background:#1a1a2e;color:white;font-size:1rem;}
+.forms button{padding:15px;border-radius:8px;border:none;background-color:#ffd700;color:#1a1a2e;font-size:1rem;font-weight:600;}
+.forms button:hover{background-color:#e6c200;transform:scale(1.05);}
+.dashboard{background-color:#162447;padding:50px 20px;text-align:center;border-radius:15px;max-width:400px;margin:0 auto;}
+.dashboard h2{font-size:2rem;margin-bottom:20px;}
+.ai-section textarea{width:100%;max-width:500px;height:120px;padding:15px;border-radius:10px;border:1px solid #ccc;resize:none;background:#1a1a2e;color:white;font-size:1rem;margin-bottom:15px;}
+.ai-section button{padding:15px 25px;border-radius:10px;border:none;background-color:#ffd700;color:#1a1a2e;font-size:1rem;font-weight:600;}
+.ai-section button:hover{background-color:#e6c200;transform:scale(1.05);}
+.ai-section .response{margin-top:20px;font-size:1rem;min-height:50px;word-wrap:break-word;}
+footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;margin-top:40px;font-size:0.9rem;}
 @media screen and (max-width:768px){
     .feature-container,.learning-container,.teaching-container,.premium-container,.courses-container{flex-direction:column;align-items:center;}
-    .hero h1{font-size:2rem;}
+    .hero h1{font-size:2.2rem;}
+    .hero p{font-size:1.1rem;}
 }
 </style>
 </head>
 <body>
 
+<!-- Hero Section -->
 <section class="hero">
 <h1>SkillSwap</h1>
 <p>Learn. Teach. Connect. Exchange skills effortlessly.</p>
-<a href="courses.html"><button class="btn">Explore Courses</button></a>
+<a href="#formsSection"><button class="btn">Get Started</button></a>
 </section>
 
+<!-- Sign Up / Sign In Forms -->
 <section class="forms" id="formsSection">
 <h2>Sign Up / Sign In</h2>
 <form id="signUpForm">
@@ -62,53 +65,56 @@ footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 </form>
 </section>
 
+<!-- Dashboard -->
 <section class="dashboard" id="dashboard" style="display:none;">
-<h2>Hi, <span id="userName"></span>!</h2>
+<h2>Welcome, <span id="userName"></span>!</h2>
 <button id="logoutBtn">Log Out</button>
 </section>
 
-<section class="learning">
-<h2>Learning Hub</h2>
+<!-- Skills Sections -->
+<section id="skills">
+<h2>Learning & Teaching Skills</h2>
 <div class="learning-container">
-<div class="learning-item" onclick="alert('Learn Guitar Basics!')"><h3>Guitar Basics</h3><p>Learn chords, strumming, and simple songs.</p></div>
-<div class="learning-item" onclick="alert('Learn Python Coding!')"><h3>Python Coding</h3><p>Start coding with Python step by step.</p></div>
-<div class="learning-item" onclick="alert('Learn AI Basics!')"><h3>AI Basics</h3><p>Learn AI concepts and applications.</p></div>
+<!-- 20 Skills -->
+<div class="learning-item"><h3>Badminton</h3><p>Learn techniques, practice drills, and improve your game.</p></div>
+<div class="learning-item"><h3>Chess</h3><p>Learn strategies, openings, and tactics to become a better player.</p></div>
+<div class="learning-item"><h3>AI Basics</h3><p>Understand artificial intelligence, machine learning, and neural networks.</p></div>
+<div class="learning-item"><h3>Python</h3><p>Start coding with Python, building projects and solving problems.</p></div>
+<div class="learning-item"><h3>Guitar</h3><p>Learn chords, strumming, and simple songs step by step.</p></div>
+<div class="learning-item"><h3>Math</h3><p>Improve your math skills, problem-solving and logic.</p></div>
+<div class="learning-item"><h3>Graphic Design</h3><p>Learn Photoshop, Illustrator and design principles.</p></div>
+<div class="learning-item"><h3>Piano</h3><p>Learn basic piano chords and practice melodies.</p></div>
+<div class="learning-item"><h3>Drawing</h3><p>Develop sketching, shading, and creative drawing skills.</p></div>
+<div class="learning-item"><h3>Photography</h3><p>Learn composition, lighting, and editing techniques.</p></div>
+<div class="learning-item"><h3>Web Development</h3><p>HTML, CSS, JS projects and front-end development skills.</p></div>
+<div class="learning-item"><h3>Video Editing</h3><p>Learn Premiere Pro, Final Cut, and editing workflows.</p></div>
+<div class="learning-item"><h3>Public Speaking</h3><p>Improve communication, presentation, and confidence.</p></div>
+<div class="learning-item"><h3>Cooking</h3><p>Learn recipes, techniques, and cooking tips.</p></div>
+<div class="learning-item"><h3>Yoga</h3><p>Practice yoga postures, breathing techniques, and mindfulness.</p></div>
+<div class="learning-item"><h3>Fitness</h3><p>Learn workouts, strength training, and nutrition basics.</p></div>
+<div class="learning-item"><h3>Painting</h3><p>Explore colors, techniques, and creative painting exercises.</p></div>
+<div class="learning-item"><h3>Dance</h3><p>Learn styles, choreography, and performance skills.</p></div>
+<div class="learning-item"><h3>Digital Marketing</h3><p>Learn SEO, social media, and online marketing strategies.</p></div>
+<div class="learning-item"><h3>Languages</h3><p>Learn new languages, grammar, and speaking practice.</p></div>
 </div>
 </section>
 
-<section class="teaching">
-<h2>Teaching Hub</h2>
-<div class="teaching-container">
-<div class="teaching-item" onclick="alert('Offer Guitar Lessons!')"><h3>Guitar Lessons</h3><p>Teach beginners how to play guitar.</p></div>
-<div class="teaching-item" onclick="alert('Offer Math Tutoring!')"><h3>Math Tutoring</h3><p>Help students understand math concepts.</p></div>
-<div class="teaching-item" onclick="alert('Offer Graphic Design!')"><h3>Graphic Design</h3><p>Share your design skills and techniques.</p></div>
-</div>
-</section>
-
-<section class="premium">
-<h2>Fast Track / Premium Lessons</h2>
-<div class="premium-container">
-<div class="premium-item" onclick="alert('Advanced Python Projects - Demo')"><h3>Advanced Python</h3><p>Work on real-life projects to level up your skills.</p></div>
-<div class="premium-item" onclick="alert('Master Guitar in 30 Days - Demo')"><h3>Master Guitar</h3><p>Intensive lessons for fast progress.</p></div>
-</div>
-</section>
-
+<!-- AI Section -->
 <section class="ai-section">
-<h2>Ask Something</h2>
+<h2>Ask AI About Any Skill (Demo)</h2>
 <textarea id="userQuestion" placeholder="Type your question here..."></textarea>
-<br>
 <button id="askBtn">Ask AI</button>
 <div class="response" id="aiResponse"></div>
 </section>
 
-<footer>
-&copy; 2025 SkillSwap. All Rights Reserved.
-</footer>
+<footer>&copy; 2025 SkillSwap. All Rights Reserved.</footer>
 
+<!-- Firebase & AI Demo Script -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 
+// Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyCSOfRPAHY44yzfT1_ojjtF3jed6-SyWFM",
   authDomain: "skillswap-84901.firebaseapp.com",
@@ -116,69 +122,4 @@ const firebaseConfig = {
   storageBucket: "skillswap-84901.firebasestorage.app",
   messagingSenderId: "369645161235",
   appId: "1:369645161235:web:5ffe998f2b28b8230a68e6",
-  measurementId: "G-B0L6P3RK05"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-const formsSection = document.getElementById('formsSection');
-const dashboard = document.getElementById('dashboard');
-const userName = document.getElementById('userName');
-
-const signUpForm = document.getElementById('signUpForm');
-const signInForm = document.getElementById('signInForm');
-const logoutBtn = document.getElementById('logoutBtn');
-
-signUpForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const name = document.getElementById('signupName').value;
-  const email = document.getElementById('signupEmail').value;
-  const password = document.getElementById('signupPassword').value;
-
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      userCredential.user.displayName = name;
-      alert('Account Created Successfully!');
-      signUpForm.reset();
-    })
-    .catch((error) => { alert(error.message); });
-});
-
-signInForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const email = document.getElementById('signinEmail').value;
-  const password = document.getElementById('signinPassword').value;
-
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      userName.innerText = user.displayName || "User";
-      formsSection.style.display = 'none';
-      dashboard.style.display = 'block';
-      signInForm.reset();
-    })
-    .catch((error) => { alert(error.message); });
-});
-
-logoutBtn.addEventListener('click', () => {
-  signOut(auth).then(() => {
-    formsSection.style.display = 'block';
-    dashboard.style.display = 'none';
-  });
-});
-
-onAuthStateChanged(auth, (user) => {
-  if(user){
-    userName.innerText = user.displayName || "User";
-    formsSection.style.display = 'none';
-    dashboard.style.display = 'block';
-  } else {
-    formsSection.style.display = 'block';
-    dashboard.style.display = 'none';
-  }
-});
-</script>
-
-</body>
-</html>
+  measurementId: "G-B
