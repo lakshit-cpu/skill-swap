@@ -6,7 +6,6 @@
 <title>SkillSwap | Learn. Teach. Connect.</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* CSS Styles */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 body{background-color:#1a1a2e;color:white;line-height:1.6;}
 h1,h2,h3{color:white;}
@@ -42,14 +41,12 @@ footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 </head>
 <body>
 
-<!-- Hero Section -->
 <section class="hero">
 <h1>SkillSwap</h1>
 <p>Learn. Teach. Connect. Exchange skills effortlessly.</p>
 <a href="courses.html"><button class="btn">Explore Courses</button></a>
 </section>
 
-<!-- Sign Up / Sign In -->
 <section class="forms" id="formsSection">
 <h2>Sign Up / Sign In</h2>
 <form id="signUpForm">
@@ -65,13 +62,11 @@ footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 </form>
 </section>
 
-<!-- Dashboard -->
 <section class="dashboard" id="dashboard" style="display:none;">
 <h2>Hi, <span id="userName"></span>!</h2>
 <button id="logoutBtn">Log Out</button>
 </section>
 
-<!-- Learning Section -->
 <section class="learning">
 <h2>Learning Hub</h2>
 <div class="learning-container">
@@ -81,7 +76,6 @@ footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 </div>
 </section>
 
-<!-- Teaching Section -->
 <section class="teaching">
 <h2>Teaching Hub</h2>
 <div class="teaching-container">
@@ -91,7 +85,6 @@ footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 </div>
 </section>
 
-<!-- Premium Section -->
 <section class="premium">
 <h2>Fast Track / Premium Lessons</h2>
 <div class="premium-container">
@@ -100,7 +93,6 @@ footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 </div>
 </section>
 
-<!-- AI Section -->
 <section class="ai-section">
 <h2>Ask Something</h2>
 <textarea id="userQuestion" placeholder="Type your question here..."></textarea>
@@ -113,12 +105,10 @@ footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 &copy; 2025 SkillSwap. All Rights Reserved.
 </footer>
 
-<!-- Firebase SDK -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 
-// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyCSOfRPAHY44yzfT1_ojjtF3jed6-SyWFM",
   authDomain: "skillswap-84901.firebaseapp.com",
@@ -129,11 +119,9 @@ const firebaseConfig = {
   measurementId: "G-B0L6P3RK05"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// DOM elements
 const formsSection = document.getElementById('formsSection');
 const dashboard = document.getElementById('dashboard');
 const userName = document.getElementById('userName');
@@ -142,7 +130,6 @@ const signUpForm = document.getElementById('signUpForm');
 const signInForm = document.getElementById('signInForm');
 const logoutBtn = document.getElementById('logoutBtn');
 
-// Sign Up
 signUpForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const name = document.getElementById('signupName').value;
@@ -155,12 +142,9 @@ signUpForm.addEventListener('submit', (e) => {
       alert('Account Created Successfully!');
       signUpForm.reset();
     })
-    .catch((error) => {
-      alert(error.message);
-    });
+    .catch((error) => { alert(error.message); });
 });
 
-// Sign In
 signInForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const email = document.getElementById('signinEmail').value;
@@ -174,4 +158,27 @@ signInForm.addEventListener('submit', (e) => {
       dashboard.style.display = 'block';
       signInForm.reset();
     })
-    .catch((error)
+    .catch((error) => { alert(error.message); });
+});
+
+logoutBtn.addEventListener('click', () => {
+  signOut(auth).then(() => {
+    formsSection.style.display = 'block';
+    dashboard.style.display = 'none';
+  });
+});
+
+onAuthStateChanged(auth, (user) => {
+  if(user){
+    userName.innerText = user.displayName || "User";
+    formsSection.style.display = 'none';
+    dashboard.style.display = 'block';
+  } else {
+    formsSection.style.display = 'block';
+    dashboard.style.display = 'none';
+  }
+});
+</script>
+
+</body>
+</html>
