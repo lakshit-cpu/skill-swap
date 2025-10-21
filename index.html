@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,6 +6,7 @@
 <title>SkillSwap | Learn. Teach. Connect.</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+/* CSS Styles */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 body{background-color:#1a1a2e;color:white;line-height:1.6;}
 h1,h2,h3{color:white;}
@@ -112,67 +113,65 @@ footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;}
 &copy; 2025 SkillSwap. All Rights Reserved.
 </footer>
 
-<script>
-// LocalStorage user system
-let users = JSON.parse(localStorage.getItem('users') || '[]');
-let currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 
+// Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyCSOfRPAHY44yzfT1_ojjtF3jed6-SyWFM",
+  authDomain: "skillswap-84901.firebaseapp.com",
+  projectId: "skillswap-84901",
+  storageBucket: "skillswap-84901.firebasestorage.app",
+  messagingSenderId: "369645161235",
+  appId: "1:369645161235:web:5ffe998f2b28b8230a68e6",
+  measurementId: "G-B0L6P3RK05"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// DOM elements
 const formsSection = document.getElementById('formsSection');
 const dashboard = document.getElementById('dashboard');
 const userName = document.getElementById('userName');
 
-// Show dashboard if already logged in
-if(currentUser){
-    formsSection.style.display='none';
-    dashboard.style.display='block';
-    userName.innerText=currentUser.name;
-}
+const signUpForm = document.getElementById('signUpForm');
+const signInForm = document.getElementById('signInForm');
+const logoutBtn = document.getElementById('logoutBtn');
 
 // Sign Up
-document.getElementById('signUpForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const name=document.getElementById('signupName').value.trim();
-    const email=document.getElementById('signupEmail').value.trim();
-    const password=document.getElementById('signupPassword').value.trim();
-    if(users.find(u=>u.email===email)){
-        alert('Email already exists!');
-        return;
-    }
-    users.push({name,email,password});
-    localStorage.setItem('users',JSON.stringify(users));
-    alert('Account Created Successfully!');
-    this.reset();
+signUpForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('signupName').value;
+  const email = document.getElementById('signupEmail').value;
+  const password = document.getElementById('signupPassword').value;
+
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      userCredential.user.displayName = name;
+      alert('Account Created Successfully!');
+      signUpForm.reset();
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
 });
 
 // Sign In
-document.getElementById('signInForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const email=document.getElementById('signinEmail').value.trim();
-    const password=document.getElementById('signinPassword').value.trim();
-    const user=users.find(u=>u.email===email && u.password===password);
-    if(user){
-        currentUser=user;
-        localStorage.setItem('currentUser',JSON.stringify(currentUser));
-        formsSection.style.display='none';
-        dashboard.style.display='block';
-        userName.innerText=user.name;
-    }else{
-        alert('Invalid Email or Password!');
-    }
-    this.reset();
-});
+signInForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const email = document.getElementById('signinEmail').value;
+  const password = document.getElementById('signinPassword').value;
 
-// Log Out
-document.getElementById('logoutBtn').addEventListener('click', ()=>{
-    currentUser=null;
-    localStorage.removeItem('currentUser');
-    dashboard.style.display='none';
-    formsSection.style.display='block';
-});
-
-// AI Demo
-const askBtn=document.getElementById('askBtn');
-const userQuestion=document.getElementById('userQuestion');
-const aiResponse=document.getElementById('aiResponse');
-
-askBtn.addEventListener('click
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      userName.innerText = user.displayName || "User";
+      formsSection.style.display = 'none';
+      dashboard.style.display = 'block';
+      signInForm.reset();
+    })
+    .catch((error)
