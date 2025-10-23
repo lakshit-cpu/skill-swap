@@ -2,124 +2,235 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SkillSwap | Learn. Teach. Connect.</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SkillSwap — Learn & Teach Skills</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-body{background-color:#1a1a2e;color:white;line-height:1.6;}
-h1,h2,h3{color:white;}
-button{cursor:pointer;transition:.3s;}
-a{color:inherit;text-decoration:none;}
-.hero{background:linear-gradient(to right,#1a1a2e,#162447);text-align:center;padding:100px 20px 80px 20px;}
-.hero h1{font-size:3rem;margin-bottom:20px;}
-.hero p{font-size:1.3rem;margin-bottom:30px;}
-.hero .btn{background-color:#ffd700;color:#1a1a2e;padding:15px 30px;font-size:1.1rem;border:none;border-radius:10px;font-weight:600;}
-.hero .btn:hover{background-color:#e6c200;transform:scale(1.05);}
-section{padding:60px 20px;text-align:center;}
-.feature-container,.learning-container,.teaching-container,.premium-container,.courses-container{display:flex;flex-wrap:wrap;justify-content:center;gap:25px;}
-.feature,.learning-item,.teaching-item,.premium-item,.course-item{background-color:#1a1a2e;color:white;padding:25px;border-radius:15px;width:280px;min-height:160px;transition:.3s;box-shadow:0 2px 10px rgba(0,0,0,0.3);}
-.feature:hover,.learning-item:hover,.teaching-item:hover,.premium-item:hover,.course-item:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.4);}
-.forms{background-color:#162447;padding:60px 20px;border-radius:15px;max-width:500px;margin:0 auto;}
-.forms h2{margin-bottom:30px;}
-.forms form{display:flex;flex-direction:column;gap:15px;}
-.forms input{padding:12px;border-radius:8px;border:1px solid #ccc;background:#1a1a2e;color:white;font-size:1rem;}
-.forms button{padding:15px;border-radius:8px;border:none;background-color:#ffd700;color:#1a1a2e;font-size:1rem;font-weight:600;}
-.forms button:hover{background-color:#e6c200;transform:scale(1.05);}
-.dashboard{background-color:#162447;padding:50px 20px;text-align:center;border-radius:15px;max-width:400px;margin:0 auto;}
-.dashboard h2{font-size:2rem;margin-bottom:20px;}
-.ai-section textarea{width:100%;max-width:500px;height:120px;padding:15px;border-radius:10px;border:1px solid #ccc;resize:none;background:#1a1a2e;color:white;font-size:1rem;margin-bottom:15px;}
-.ai-section button{padding:15px 25px;border-radius:10px;border:none;background-color:#ffd700;color:#1a1a2e;font-size:1rem;font-weight:600;}
-.ai-section button:hover{background-color:#e6c200;transform:scale(1.05);}
-.ai-section .response{margin-top:20px;font-size:1rem;min-height:50px;word-wrap:break-word;}
-footer{background-color:#1a1a2e;color:white;text-align:center;padding:20px;margin-top:40px;font-size:0.9rem;}
-@media screen and (max-width:768px){
-    .feature-container,.learning-container,.teaching-container,.premium-container,.courses-container{flex-direction:column;align-items:center;}
-    .hero h1{font-size:2.2rem;}
-    .hero p{font-size:1.1rem;}
+:root{
+  --bg:#0f1724; --card:#0b1220; --accent:#FACC15; --muted:#9aa6b2; --panel:#071122; --white:#fff;
 }
+*{box-sizing:border-box;font-family:'Inter',sans-serif;margin:0;padding:0;}
+body{background:linear-gradient(180deg,var(--bg),#071026);color:var(--white);}
+.wrap{max-width:1100px;margin:18px auto;padding:18px;}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);}
+.logo{font-weight:700;color:var(--accent);}
+.btn{background:var(--accent);color:#071022;border:none;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer;}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--white);padding:8px 12px;border-radius:10px;cursor:pointer;}
+.hero{background:linear-gradient(90deg,#07122520,#07102a40);padding:36px;border-radius:12px;margin-top:14px;text-align:center;}
+.hero h1{color:var(--accent);margin-bottom:10px;font-size:2rem;}
+.hero p{color:var(--muted);}
+.skills-container{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;max-height:600px;overflow-y:auto;}
+.skill-btn{flex:1 1 150px;padding:10px;background:#1b1f38;color:white;border:none;border-radius:8px;cursor:pointer;transition:0.2s;}
+.skill-btn:hover{background:#272b4d;transform:scale(1.05);}
+.card{background:var(--card);padding:12px;border-radius:12px;margin-bottom:14px;}
+footer{margin-top:18px;text-align:center;color:var(--muted);}
+.forms{background:var(--panel);padding:18px;border-radius:12px;margin-top:18px;}
+.forms h2{margin-bottom:12px;}
+.forms input{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #444;background:var(--card);color:white;}
+.forms button{margin-top:6px;padding:10px;border:none;border-radius:8px;background:var(--accent);color:#071022;cursor:pointer;}
+.forms button:hover{background:#e6c200;}
+#dashboard{display:none;margin-top:18px;background:var(--panel);padding:18px;border-radius:12px;}
+.ai-section{margin-top:18px;background:var(--panel);padding:18px;border-radius:12px;}
+.ai-section textarea{width:100%;height:100px;padding:10px;border-radius:8px;border:1px solid #444;background:var(--card);color:white;resize:none;}
+.ai-section button{margin-top:8px;padding:10px;border:none;border-radius:8px;background:var(--accent);color:#071022;cursor:pointer;}
+.ai-section button:hover{background:#e6c200;}
+.ai-section .response{margin-top:12px;min-height:50px;}
+@media(max-width:900px){.skills-container{flex-direction:column;max-height:none;}}
 </style>
 </head>
 <body>
+<div class="wrap">
+<header>
+<div class="logo">SkillSwap</div>
+<button id="authBtn" class="btn-ghost">Login / SignUp</button>
+</header>
 
-<!-- Hero Section -->
-<section class="hero">
+<section class="hero card">
 <h1>SkillSwap</h1>
-<p>Learn. Teach. Connect. Exchange skills effortlessly.</p>
-<a href="#formsSection"><button class="btn">Get Started</button></a>
+<p>Explore 50 skills below, learn or become a mentor. Click any skill to see details.</p>
 </section>
 
-<!-- Sign Up / Sign In Forms -->
-<section class="forms" id="formsSection">
+<section class="card">
+<h2>Skills</h2>
+<div class="skills-container" id="skillsContainer"></div>
+</section>
+
+<section class="forms card" id="authForms">
 <h2>Sign Up / Sign In</h2>
-<form id="signUpForm">
-<input type="text" placeholder="Name" required id="signupName">
-<input type="email" placeholder="Email" required id="signupEmail">
-<input type="password" placeholder="Password" required id="signupPassword">
+<form id="signupForm">
+<input type="text" placeholder="Name" id="signupName" required>
+<input type="email" placeholder="Email" id="signupEmail" required>
+<input type="password" placeholder="Password" id="signupPassword" required>
 <button type="submit">Create Account</button>
 </form>
-<form id="signInForm">
-<input type="email" placeholder="Email" required id="signinEmail">
-<input type="password" placeholder="Password" required id="signinPassword">
+<form id="signinForm" style="margin-top:12px;">
+<input type="email" placeholder="Email" id="signinEmail" required>
+<input type="password" placeholder="Password" id="signinPassword" required>
 <button type="submit">Sign In</button>
 </form>
 </section>
 
-<!-- Dashboard -->
-<section class="dashboard" id="dashboard" style="display:none;">
-<h2>Welcome, <span id="userName"></span>!</h2>
+<section id="dashboard">
+<h2>Hi, <span id="userName"></span>!</h2>
 <button id="logoutBtn">Log Out</button>
 </section>
 
-<!-- Skills Sections -->
-<section id="skills">
-<h2>Learning & Teaching Skills</h2>
-<div class="learning-container">
-<!-- 20 Skills -->
-<div class="learning-item"><h3>Badminton</h3><p>Learn techniques, practice drills, and improve your game.</p></div>
-<div class="learning-item"><h3>Chess</h3><p>Learn strategies, openings, and tactics to become a better player.</p></div>
-<div class="learning-item"><h3>AI Basics</h3><p>Understand artificial intelligence, machine learning, and neural networks.</p></div>
-<div class="learning-item"><h3>Python</h3><p>Start coding with Python, building projects and solving problems.</p></div>
-<div class="learning-item"><h3>Guitar</h3><p>Learn chords, strumming, and simple songs step by step.</p></div>
-<div class="learning-item"><h3>Math</h3><p>Improve your math skills, problem-solving and logic.</p></div>
-<div class="learning-item"><h3>Graphic Design</h3><p>Learn Photoshop, Illustrator and design principles.</p></div>
-<div class="learning-item"><h3>Piano</h3><p>Learn basic piano chords and practice melodies.</p></div>
-<div class="learning-item"><h3>Drawing</h3><p>Develop sketching, shading, and creative drawing skills.</p></div>
-<div class="learning-item"><h3>Photography</h3><p>Learn composition, lighting, and editing techniques.</p></div>
-<div class="learning-item"><h3>Web Development</h3><p>HTML, CSS, JS projects and front-end development skills.</p></div>
-<div class="learning-item"><h3>Video Editing</h3><p>Learn Premiere Pro, Final Cut, and editing workflows.</p></div>
-<div class="learning-item"><h3>Public Speaking</h3><p>Improve communication, presentation, and confidence.</p></div>
-<div class="learning-item"><h3>Cooking</h3><p>Learn recipes, techniques, and cooking tips.</p></div>
-<div class="learning-item"><h3>Yoga</h3><p>Practice yoga postures, breathing techniques, and mindfulness.</p></div>
-<div class="learning-item"><h3>Fitness</h3><p>Learn workouts, strength training, and nutrition basics.</p></div>
-<div class="learning-item"><h3>Painting</h3><p>Explore colors, techniques, and creative painting exercises.</p></div>
-<div class="learning-item"><h3>Dance</h3><p>Learn styles, choreography, and performance skills.</p></div>
-<div class="learning-item"><h3>Digital Marketing</h3><p>Learn SEO, social media, and online marketing strategies.</p></div>
-<div class="learning-item"><h3>Languages</h3><p>Learn new languages, grammar, and speaking practice.</p></div>
-</div>
-</section>
-
-<!-- AI Section -->
-<section class="ai-section">
-<h2>Ask AI About Any Skill (Demo)</h2>
-<textarea id="userQuestion" placeholder="Type your question here..."></textarea>
+<section class="ai-section card">
+<h2>Ask AI About Any Skill</h2>
+<textarea id="userQuestion" placeholder="Type your question..."></textarea>
 <button id="askBtn">Ask AI</button>
 <div class="response" id="aiResponse"></div>
 </section>
 
-<footer>&copy; 2025 SkillSwap. All Rights Reserved.</footer>
+<footer>&copy; 2025 SkillSwap Demo</footer>
+</div>
 
-<!-- Firebase & AI Demo Script -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+<script>
+// === Temporary login/signup using localStorage ===
+let currentUser = null;
+const authBtn = document.getElementById('authBtn');
+const authForms = document.getElementById('authForms');
+const dashboard = document.getElementById('dashboard');
+const userNameSpan = document.getElementById('userName');
 
-// Firebase Config
-const firebaseConfig = {
-  apiKey: "AIzaSyCSOfRPAHY44yzfT1_ojjtF3jed6-SyWFM",
-  authDomain: "skillswap-84901.firebaseapp.com",
-  projectId: "skillswap-84901",
-  storageBucket: "skillswap-84901.firebasestorage.app",
-  messagingSenderId: "369645161235",
-  appId: "1:369645161235:web:5ffe998f2b28b8230a68e6",
-  measurementId: "G-B
+function updateDashboard(){
+  if(currentUser){
+    authForms.style.display='none';
+    dashboard.style.display='block';
+    userNameSpan.textContent = currentUser.name;
+  }else{
+    dashboard.style.display='none';
+    authForms.style.display='block';
+  }
+}
+
+authBtn.onclick = ()=>{ authForms.scrollIntoView({behavior:"smooth"}); }
+
+document.getElementById('signupForm').onsubmit=function(e){
+  e.preventDefault();
+  const name=document.getElementById('signupName').value;
+  const email=document.getElementById('signupEmail').value;
+  const pass=document.getElementById('signupPassword').value;
+  let users = JSON.parse(localStorage.getItem('users')||'[]');
+  if(users.find(u=>u.email===email)){alert('Email already exists'); return;}
+  users.push({name,email,pass});
+  localStorage.setItem('users',JSON.stringify(users));
+  alert('Account created. You can now sign in.');
+  this.reset();
+}
+
+document.getElementById('signinForm').onsubmit=function(e){
+  e.preventDefault();
+  const email=document.getElementById('signinEmail').value;
+  const pass=document.getElementById('signinPassword').value;
+  let users = JSON.parse(localStorage.getItem('users')||'[]');
+  const user=users.find(u=>u.email===email && u.pass===pass);
+  if(user){currentUser=user; updateDashboard();}
+  else alert('Invalid email or password');
+  this.reset();
+}
+
+document.getElementById('logoutBtn').onclick=function(){
+  currentUser=null;
+  updateDashboard();
+}
+
+// === 50 Skills ===
+const skillsData = [
+"Badminton","Chess","AI Basics","Python","Guitar","Math","Graphic Design","Piano","Drawing","Photography",
+"Web Development","Video Editing","Public Speaking","Cooking","Yoga","Fitness","Painting","Dance","Digital Marketing","Languages",
+"Singing","Swimming","Cycling","Meditation","Leadership","Writing","Robotics","Data Science","Machine Learning","Finance",
+"Entrepreneurship","Photography Editing","UI/UX Design","Networking","3D Modeling","Animation","Game Development","C Programming","Java",
+"Javascript","Cybersecurity","Photography Studio","AI Art","Content Writing","Leadership Skills","Marketing Strategy","Blockchain","Rust Programming","Linux","SQL","React"
+];
+
+const skillsContainer=document.getElementById('skillsContainer');
+skillsData.forEach(skill=>{
+  const btn=document.createElement('button');
+  btn.className='skill-btn';
+  btn.textContent=skill;
+  btn.onclick=()=>{ alert(`Skill clicked: ${skill}\n(This is a demo. Skill detail page coming soon.)`) }
+  skillsContainer.appendChild(btn);
+});
+
+// === AI Section ===
+const predefinedQA = {
+"How do I learn Python?":"Start with basics, practice exercises and small projects.",
+"Best way to learn AI?":"Understand machine learning fundamentals and practice with projects.",
+"How to play badminton?":"Focus on footwork, grip, and practice regularly.",
+"How to improve guitar skills?":"Practice chords, strumming, and simple songs daily.",
+"How to become a good public speaker?":"Practice regularly, record yourself and seek feedback.",
+"How to cook pasta?":"Follow recipes, practice boiling techniques and sauces.",
+"How to meditate?":"Start with 5-10 minutes daily and focus on your breathing.",
+"How to improve drawing?":"Practice sketches, shading, and observation skills.",
+"Best way to learn math?":"Understand concepts and solve lots of problems.",
+"How to do web development?":"Learn HTML, CSS, JS and build small projects.",
+"How to edit videos?":"Practice cutting, transitions, and color correction.",
+"How to play piano?":"Practice scales, chords, and simple songs daily.",
+"How to learn photography?":"Practice composition, lighting and editing.",
+"How to dance?":"Learn basic steps, practice regularly and watch tutorials.",
+"How to start a blog?":"Choose a niche, write daily, and learn SEO.",
+"How to become a mentor?":"Share your knowledge, guide beginners, and create content.",
+"How to improve fitness?":"Follow workout plans, nutrition, and consistency.",
+"How to do graphic design?":"Practice tools, design principles, and projects.",
+"How to learn chess?":"Study openings, tactics, endgames and play regularly.",
+"How to learn leadership?":"Study examples, practice delegation and decision-making.",
+"How to code in Java?":"Learn syntax, OOP concepts, and practice projects.",
+"How to learn UI/UX design?":"Understand user flow, wireframes, and prototyping.",
+"How to do blockchain?":"Study smart contracts, applications and basic crypto.",
+"How to learn data science?":"Python, statistics, visualization, and practice datasets.",
+"How to improve singing?":"Practice pitch, breathing, and vocal exercises.",
+"How to learn robotics?":"Start with sensors, motors, and basic programming.",
+"How to learn machine learning?":"Start with Python, ML libraries and small projects.",
+"How to improve content writing?":"Practice, read examples, and learn SEO.",
+"How to become a better writer?":"Write daily, edit, and read widely.",
+"How to learn digital marketing?":"SEO, campaigns, social media, and analytics.",
+"How to do video editing?":"Use tools like Premiere, practice cuts and transitions.",
+"How to practice meditation?":"Daily sessions focusing on breath and mindfulness.",
+"How to improve photography?":"Practice shooting, lighting, and post-processing.",
+"How to learn cooking?":"Follow recipes, practice techniques and flavors.",
+"How to improve yoga?":"Practice poses daily and learn breathing techniques.",
+"How to learn C programming?":"Syntax, pointers, loops, and small projects.",
+"How to learn Javascript?":"JS syntax, DOM, events and projects.",
+"How to practice meditation?":"Daily sessions, focus on breathing and mindfulness.",
+"How to learn React?":"Components, state, props, hooks, and small apps.",
+"How to learn Rust?":"Ownership, borrowing, syntax and projects.",
+"How to learn SQL?":"Tables, queries, joins, and practice datasets.",
+"How to improve networking?":"Attend events, practice social and IT networking.",
+"How to learn Linux?":"Commands, scripting, server basics and practice.",
+"How to start entrepreneurship?":"Ideas, planning, MVP, and pitching.",
+"How to improve animation?":"Practice frame by frame, 2D/3D software."
+};
+
+const randomAnswers=[
+"Interesting question! Try researching more online.",
+"That's a tricky one, experiment to learn!",
+"Try breaking it into smaller steps.",
+"Practice consistently and you'll improve.",
+"Read articles and tutorials for deeper understanding.",
+"Ask a mentor or friend for guidance.",
+"Watch videos or take small courses.",
+"Practice hands-on to get experience.",
+"Explore online resources and communities.",
+"Try a different approach and iterate.",
+"Keep experimenting until you succeed.",
+"Focus on basics first, then move forward.",
+"Take small projects to learn faster.",
+"Research similar problems and solutions.",
+"Reflect and practice regularly.",
+"Observe experts and follow examples.",
+"Don't be afraid to make mistakes.",
+"Keep a learning journal.",
+"Teach someone else to understand better.",
+"Mix theory with practice for best results."
+];
+
+document.getElementById('askBtn').onclick=function(){
+  const q=document.getElementById('userQuestion').value.trim();
+  let ans=predefinedQA[q]||randomAnswers[Math.floor(Math.random()*randomAnswers.length)];
+  document.getElementById('aiResponse').textContent=ans;
+  document.getElementById('userQuestion').value='';
+}
+</script>
+</body>
+</html>
